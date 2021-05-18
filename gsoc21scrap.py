@@ -5,7 +5,7 @@ url= 'https://summerofcode.withgoogle.com/api/program/current/project/'
 
 
 with open('gsoc2021.csv','w', encoding='utf-8', newline='') as csv_file:
-    field_names = ['Name','Project', 'Organization']
+    field_names = ['Name', 'Organization','Project']
     writer = csv.DictWriter(csv_file, fieldnames=field_names)
     writer.writeheader()
 
@@ -19,7 +19,7 @@ with open('gsoc2021.csv','w', encoding='utf-8', newline='') as csv_file:
         for ele in data:
             vals = dict()
             vals['Name'] = ele.get("student").get("display_name")
-            vals['Project'] = ele.get("title")
             vals['Organization'] = ele.get('organization').get('name')
+            vals['Project'] = ele.get("title")
             writer.writerow(vals)
             
